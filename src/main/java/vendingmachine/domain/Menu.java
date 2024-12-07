@@ -36,6 +36,10 @@ public class Menu {
         return of(id, name, price, RandomUtil.generateRandomNumber(10, 30));
     }
 
+    public boolean isSameId(int id) {
+        return this.id == id;
+    }
+
     public MenuResponse createResponse() {
         if (quantity == 0) {
             return null;

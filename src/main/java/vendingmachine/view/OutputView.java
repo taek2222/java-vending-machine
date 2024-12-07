@@ -20,11 +20,19 @@ public class OutputView {
         menus.forEach(this::printMenu);
     }
 
+    public void printFindMenu(MenuResponse response) {
+        System.out.printf("%s 1개 - %s",
+                response.name(),
+                PRICE_FORMAT.format(response.price())
+        );
+    }
+
     private void printMenu(MenuResponse response) {
         System.out.printf("%d. %s - %s원",
                 response.id(),
                 response.name(),
-                PRICE_FORMAT.format(response.price()));
+                PRICE_FORMAT.format(response.price())
+        );
 
         System.out.println();
     }

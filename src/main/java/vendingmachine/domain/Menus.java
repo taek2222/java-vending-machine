@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import static vendingmachine.constant.ErrorMessage.INVALID_FIND_MENU;
+
 import java.util.List;
 import java.util.Objects;
 import vendingmachine.domain.dto.MenuResponse;
@@ -24,5 +26,12 @@ public class Menus {
                 .toList();
 
         return new MenusResponse(menuResponses);
+    }
+
+    public Menu findMenuById(int id) {
+        return menus.stream()
+                .filter(menu -> menu.isSameId(id))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_FIND_MENU.get()));
     }
 }
