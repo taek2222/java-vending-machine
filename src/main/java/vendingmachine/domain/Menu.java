@@ -13,7 +13,7 @@ public class Menu {
     private final int id;
     private final String name;
     private final int price;
-    private final int quantity;
+    private int quantity;
 
     public Menu(int id, String name, int price, int quantity) {
         validateName(name);
@@ -40,6 +40,10 @@ public class Menu {
         return this.id == id;
     }
 
+    public void decreaseQuantity(int salesQuantity) {
+        this.quantity -= salesQuantity;
+    }
+
     public MenuResponse createResponse() {
         if (quantity == 0) {
             return null;
@@ -51,6 +55,10 @@ public class Menu {
                 price,
                 quantity
         );
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     private void validateName(String name) {
